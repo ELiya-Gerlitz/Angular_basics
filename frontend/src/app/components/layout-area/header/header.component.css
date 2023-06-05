@@ -1,0 +1,13 @@
+div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow:visible;
+}
+
+p {
+    font-family: 'Rubik Moonrocks', cursive;
+    font-size: 45px;
+
+}

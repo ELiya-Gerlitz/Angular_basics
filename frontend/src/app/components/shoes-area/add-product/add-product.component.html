@@ -1,0 +1,15 @@
+<p>add-product works!</p>
+<form (ngSubmit)="send()">
+    <input type="text" name="name" placeholder="name" [(ngModel)]="product.name"><br>
+    <input type="datetime-local" name="dateTime" placeholder="date and time"  [(ngModel)]="product.dateTime" ><br>
+    <input type="datetime-local" name="expirationDateTime" placeholder="expiration date" [(ngModel)]="product.expirationDateTime"><br>
+    <input type="text" placeholder="price" name="price" [(ngModel)]="product.price"><br>
+
+    <select defaultValue="" name="categoryId" [(ngModel)]="product.categoryId">  
+        <option disabled selected value="">select a category name </option>
+      <option value={{c.categoryId}} *ngFor="let c of categories">{{c.categoryName}}</option> 
+    </select><br>
+
+    <button>submit</button>
+
+</form>
