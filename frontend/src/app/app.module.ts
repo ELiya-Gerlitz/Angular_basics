@@ -17,6 +17,7 @@ import { InputComponent } from './components/shoes-area/input/input.component';
 import { ShoesListComponent } from './components/shoes-area/shoes-list/shoes-list.component';
 import { HttpClientModule } from "@angular/common/http";
 import { AddProductComponent } from './components/shoes-area/add-product/add-product.component';
+import { ProductCardComponent } from './components/shoes-area/product-card/product-card.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { AddProductComponent } from './components/shoes-area/add-product/add-pro
        DiscountComponent,
        InputComponent,
        ShoesListComponent,
-       AddProductComponent
+       AddProductComponent,
+       ProductCardComponent
       
   ],
   imports: [
