@@ -1,15 +1,29 @@
 <p>add-product works!</p>
-<form (ngSubmit)="send()">
-    <input type="text" name="name" placeholder="name" [(ngModel)]="product.name"><br>
-    <input type="datetime-local" name="dateTime" placeholder="date and time"  [(ngModel)]="product.dateTime" ><br>
-    <input type="datetime-local" name="expirationDateTime" placeholder="expiration date" [(ngModel)]="product.expirationDateTime"><br>
-    <input type="text" placeholder="price" name="price" [(ngModel)]="product.price"><br>
+<!-- <form (ngSubmit)="send()" ngNativeValidate>  attribute of html 5--> 
+<form (ngSubmit)="send()" #productForm="ngForm">
+    <span class="err" *ngIf="nameBox.errors?.['required'] && nameBox.touched">Missing name</span>
+    <span class="err" *ngIf="nameBox.errors?.['minlength'] && nameBox.touched">Name must exceed 2 chars</span>  
+    <input type="text" name="name" placeholder="name" [(ngModel)]="product.name" #nameBox="ngModel" required minlength="2"><br>
+    
+    <span class="err" *ngIf="ManufacturingDateBox.errors?.['required'] && ManufacturingDateBox.touched">Missing Manufacturing date</span>
+    <input type="datetime-local" name="dateTime" placeholder="manufacturing date"  [(ngModel)]="product.dateTime" #ManufacturingDateBox="ngModel" required><br>
 
-    <select defaultValue="" name="categoryId" [(ngModel)]="product.categoryId">  
+    <span class="err" *ngIf="ExpirationDateBox.errors?.['required'] && ExpirationDateBox.touched">Missing Expiration date</span>
+    <input type="datetime-local" name="expirationDateTime" placeholder="expiration date" [(ngModel)]="product.expirationDateTime" #ExpirationDateBox="ngModel" required><br>
+
+
+    <span class="err" *ngIf="priceBox.errors?.['required'] && priceBox.touched">Missing price</span>
+    <span class="err" *ngIf="priceBox.errors?.['min'] && priceBox.touched">Price can't be negative</span>
+    <span class="err" *ngIf="priceBox.errors?.['max'] && priceBox.touched">Price can't exceed 1000</span>
+    <input type="number" placeholder="price" name="price" [(ngModel)]="product.price" #priceBox="ngModel" required min="5" max="1000"><br>
+
+
+    <span class="err" *ngIf="selectCategory.errors?.['required'] && selectCategory.touched">Missing price</span>
+    <select defaultValue="" name="categoryId" [(ngModel)]="product.categoryId" #selectCategory="ngModel" required>  
         <option disabled selected value="">select a category name </option>
       <option value={{c.categoryId}} *ngFor="let c of categories">{{c.categoryName}}</option> 
     </select><br>
 
-    <button>submit</button>
+    <button [disabled]="productForm.invalid">submit</button>
 
 </form>

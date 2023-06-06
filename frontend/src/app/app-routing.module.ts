@@ -9,6 +9,8 @@ import { StoriesComponent } from './components/shoes-area/stories/stories.compon
 import { InputComponent } from './components/shoes-area/input/input.component';
 import { ShoesListComponent } from './components/shoes-area/shoes-list/shoes-list.component';
 import { AddProductComponent } from './components/shoes-area/add-product/add-product.component';
+// import { PageNotFoundComponent } from './components/layout-area/page-not-found/page-not-found.component';
+import { PageNotfoundComponent } from './components/layout-area/page-notfound/page-notfound.component';
 
 const routes: Routes = [
   {path : "home", component : HomeComponent},
@@ -20,8 +22,8 @@ const routes: Routes = [
   {path : "input", component : InputComponent},
   {path : "listing", component : ShoesListComponent},
   {path : "add", component : AddProductComponent},
-  {path: "", redirectTo: "/home", pathMatch: "full" } // pathMatch: "full" --> exact empty string
-
+  {path: "", redirectTo: "/home", pathMatch: "full" }, // pathMatch: "full" --> exact empty string,
+  {path : "**", component : PageNotfoundComponent}
 ];
 
 @NgModule({

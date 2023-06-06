@@ -18,6 +18,8 @@ import { ShoesListComponent } from './components/shoes-area/shoes-list/shoes-lis
 import { HttpClientModule } from "@angular/common/http";
 import { AddProductComponent } from './components/shoes-area/add-product/add-product.component';
 import { ProductCardComponent } from './components/shoes-area/product-card/product-card.component';
+import { PageNotfoundComponent } from './components/layout-area/page-notfound/page-notfound.component';
+import { Router, RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -36,14 +38,16 @@ import { ProductCardComponent } from './components/shoes-area/product-card/produ
        InputComponent,
        ShoesListComponent,
        AddProductComponent,
-       ProductCardComponent
+       ProductCardComponent,
+       PageNotfoundComponent
       
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [LayoutComponent],

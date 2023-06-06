@@ -20,3 +20,19 @@ a {
     border-radius: 10px;
     box-shadow: 5px 5px 10px;
 }
+
+.err {
+    position: absolute;
+    color: red;
+    margin-left: 20px;
+}
+
+/* .ng-touched.ng-invalid:not(form) { */
+form > .ng-touched.ng-invalid {
+    background-color: pink;
+    border: 2px solid red;
+}
+form {
+    box-sizing: border-box;
+
+}

@@ -3,7 +3,7 @@ import { firstValueFrom } from 'rxjs';
 import { CategoryModel } from 'src/Models/category.model';
 import { ProductsModel } from 'src/Models/products.model';
 import { ProductsService } from 'src/services/products.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -13,8 +13,8 @@ export class AddProductComponent implements OnInit{
   public product = new ProductsModel()
   public categories : CategoryModel[] 
 
-
-  public constructor(private productService : ProductsService){}
+  
+  public constructor(private productService : ProductsService, private router: Router){}
 
 //  get all categories
   async ngOnInit(): Promise<void>{
@@ -27,7 +27,12 @@ export class AddProductComponent implements OnInit{
   }
 
 public async send():Promise<void>{
-  await this.productService.addProduct(this.product)
-  alert("successfully added!")
+  try{
+      await this.productService.addProduct(this.product)
+      alert("successfully added!")
+      this.router.navigate(['/', 'home'])
+  }catch(err: any){
+      console.log(err)
+  }
 }
 }
